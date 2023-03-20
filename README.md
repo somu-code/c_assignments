@@ -1,2 +1,2 @@
 # c_assignments
-This repository consistent of assignments done in Giganoto Bootcamp.
+This repository is consistent with c programming assignments done in Giganoto Bootcamp.
