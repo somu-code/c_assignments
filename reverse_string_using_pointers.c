@@ -20,6 +20,7 @@ void reverseString(char *str)
 void main(void)
 {
 	char str[100];
+	printf("Enter a stirng: ");
 	scanf("%s", str);
 	reverseString(str);
 	printf("%s\n", str);
