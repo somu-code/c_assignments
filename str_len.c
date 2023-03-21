@@ -1,8 +1,10 @@
 #include <stdio.h>
 
-int main(void)
+void main(void)
 {
-	char str[] = "Hello";
+	char str[1000];
+	printf("Enter a stirng: ");
+	scanf("%s", str);
 	int count = 0;
 	char *p = str;
 	while (*p != '\0') {
@@ -10,5 +12,4 @@ int main(void)
 		p++;
 	}
 	printf("Length of string is: %d\n", count);
-	return 0;
 }
