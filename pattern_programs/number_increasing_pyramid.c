@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int main(void) {
-    for (int i = 0; i < 4; i++) {
+void print_pattern(int n) {
+    for (int i = 0; i < n; i++) {
         int j = 1;
         for (int k = 0; k <= i; k++) {
             printf("%d ", j);
@@ -9,4 +9,9 @@ int main(void) {
         }
         printf("\n");
     }
+}
+
+int main(void) {
+    int n = 4;
+    print_pattern(n);
 }
