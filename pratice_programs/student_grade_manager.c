@@ -64,6 +64,11 @@ int main(void) {
     };
     struct average_marks
         students_average_marks_each_student[struct_student_array_length];
+    for (int i = 0; i < struct_student_array_length; i++) {
+        students_average_marks_each_student[i].name = students[i].name;
+        students_average_marks_each_student[i].roll_number =
+            students[i].roll_number;
+    }
     for (int i = 0; i < 6; i++) {
         students_average_marks_each_student[i].average_marks =
             (students[i].marks.data_structures_and_algorithms +
@@ -75,7 +80,7 @@ int main(void) {
             6;
     }
     for (int i = 0; i < struct_student_array_length; i++) {
-        printf("Name: %s, Roll number: %d, Average marks: %d\n",
+        printf("Name: %s, Roll number: %d, Average marks %d\n",
                students_average_marks_each_student[i].name,
                students_average_marks_each_student[i].roll_number,
                students_average_marks_each_student[i].average_marks);
