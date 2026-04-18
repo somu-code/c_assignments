@@ -2,17 +2,20 @@
 
 #define struct_student_array_length 5
 
+// float calculate_average(struct student *s);
+// void display_student(struct average_marks *am);
+
 int main(void) {
     struct student {
         char *name;
-        int roll_number;
+        unsigned char roll_number;
         struct marks_in_particular_subjects {
-            unsigned char data_structures_and_algorithms;
-            unsigned char operating_systems;
-            unsigned char database_management_systems;
-            unsigned char object_oriented_programming;
-            unsigned char artificial_intelligence;
-            unsigned char machine_learning;
+            float data_structures_and_algorithms;
+            float operating_systems;
+            float database_management_systems;
+            float object_oriented_programming;
+            float artificial_intelligence;
+            float machine_learning;
         } marks;
     };
     struct student students[struct_student_array_length] = {
@@ -60,7 +63,7 @@ int main(void) {
     struct average_marks {
         char *name;
         int roll_number;
-        char average_marks;
+        float average_marks;
     };
     struct average_marks
         students_average_marks_each_student[struct_student_array_length];
@@ -69,7 +72,7 @@ int main(void) {
         students_average_marks_each_student[i].roll_number =
             students[i].roll_number;
     }
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < struct_student_array_length; i++) {
         students_average_marks_each_student[i].average_marks =
             (students[i].marks.data_structures_and_algorithms +
              students[i].marks.operating_systems +
@@ -80,7 +83,7 @@ int main(void) {
             6;
     }
     for (int i = 0; i < struct_student_array_length; i++) {
-        printf("Name: %s, Roll number: %d, Average marks %d\n",
+        printf("Name: %s, Roll number: %d, Average marks %.2f\n",
                students_average_marks_each_student[i].name,
                students_average_marks_each_student[i].roll_number,
                students_average_marks_each_student[i].average_marks);
