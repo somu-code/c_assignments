@@ -1,0 +1,83 @@
+#include <stdio.h>
+
+#define struct_student_array_length 5
+
+int main(void) {
+    struct student {
+        char *name;
+        int roll_number;
+        struct marks_in_particular_subjects {
+            unsigned char data_structures_and_algorithms;
+            unsigned char operating_systems;
+            unsigned char database_management_systems;
+            unsigned char object_oriented_programming;
+            unsigned char artificial_intelligence;
+            unsigned char machine_learning;
+        } marks;
+    };
+    struct student students[struct_student_array_length] = {
+        {.name = "student_one",
+         .roll_number = 1,
+         .marks = {.data_structures_and_algorithms = 11,
+                   .operating_systems = 12,
+                   .database_management_systems = 13,
+                   .object_oriented_programming = 14,
+                   .artificial_intelligence = 15,
+                   .machine_learning = 16}},
+        {.name = "student_two",
+         .roll_number = 2,
+         .marks = {.data_structures_and_algorithms = 21,
+                   .operating_systems = 22,
+                   .database_management_systems = 23,
+                   .object_oriented_programming = 24,
+                   .artificial_intelligence = 25,
+                   .machine_learning = 26}},
+        {.name = "student_three",
+         .roll_number = 3,
+         .marks = {.data_structures_and_algorithms = 31,
+                   .operating_systems = 32,
+                   .database_management_systems = 33,
+                   .object_oriented_programming = 34,
+                   .artificial_intelligence = 35,
+                   .machine_learning = 36}},
+        {.name = "student_four",
+         .roll_number = 4,
+         .marks = {.data_structures_and_algorithms = 41,
+                   .operating_systems = 42,
+                   .database_management_systems = 43,
+                   .object_oriented_programming = 44,
+                   .artificial_intelligence = 45,
+                   .machine_learning = 46}},
+        {.name = "student_five",
+         .roll_number = 5,
+         .marks = {.data_structures_and_algorithms = 51,
+                   .operating_systems = 52,
+                   .database_management_systems = 53,
+                   .object_oriented_programming = 54,
+                   .artificial_intelligence = 55,
+                   .machine_learning = 56}},
+    };
+    struct average_marks {
+        char *name;
+        int roll_number;
+        char average_marks;
+    };
+    struct average_marks
+        students_average_marks_each_student[struct_student_array_length];
+    for (int i = 0; i < 6; i++) {
+        students_average_marks_each_student[i].average_marks =
+            (students[i].marks.data_structures_and_algorithms +
+             students[i].marks.operating_systems +
+             students[i].marks.database_management_systems +
+             students[i].marks.object_oriented_programming +
+             students[i].marks.artificial_intelligence +
+             students[i].marks.machine_learning) /
+            6;
+    }
+    for (int i = 0; i < struct_student_array_length; i++) {
+        printf("Name: %s, Roll number: %d, Average marks: %d\n",
+               students_average_marks_each_student[i].name,
+               students_average_marks_each_student[i].roll_number,
+               students_average_marks_each_student[i].average_marks);
+    }
+}
