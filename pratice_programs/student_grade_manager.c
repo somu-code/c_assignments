@@ -9,6 +9,7 @@ int main(void) {
     struct student {
         char *name;
         unsigned char roll_number;
+        float average_marks;
         struct marks_in_particular_subjects {
             float data_structures_and_algorithms;
             float operating_systems;
@@ -60,20 +61,9 @@ int main(void) {
                    .artificial_intelligence = 55,
                    .machine_learning = 56}},
     };
-    struct average_marks {
-        char *name;
-        int roll_number;
-        float average_marks;
-    };
-    struct average_marks
-        students_average_marks_each_student[struct_student_array_length];
+
     for (int i = 0; i < struct_student_array_length; i++) {
-        students_average_marks_each_student[i].name = students[i].name;
-        students_average_marks_each_student[i].roll_number =
-            students[i].roll_number;
-    }
-    for (int i = 0; i < struct_student_array_length; i++) {
-        students_average_marks_each_student[i].average_marks =
+        students[i].average_marks =
             (students[i].marks.data_structures_and_algorithms +
              students[i].marks.operating_systems +
              students[i].marks.database_management_systems +
@@ -84,8 +74,7 @@ int main(void) {
     }
     for (int i = 0; i < struct_student_array_length; i++) {
         printf("Name: %s, Roll number: %d, Average marks %.2f\n",
-               students_average_marks_each_student[i].name,
-               students_average_marks_each_student[i].roll_number,
-               students_average_marks_each_student[i].average_marks);
+               students[i].name, students[i].roll_number,
+               students[i].average_marks);
     }
 }
