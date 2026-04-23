@@ -68,13 +68,14 @@ void calculate_average(struct student s[]) {
             6;
     }
 }
-// void display_student(struct average_marks *am);
+void display_students(struct student s[]) {
+    for (int i = 0; i < struct_student_array_length; i++) {
+        printf("Name: %s, Roll number: %d, Average marks %.2f\n", s[i].name,
+               s[i].roll_number, s[i].average_marks);
+    }
+}
 
 int main(void) {
     calculate_average(students);
-    for (int i = 0; i < struct_student_array_length; i++) {
-        printf("Name: %s, Roll number: %d, Average marks %.2f\n",
-               students[i].name, students[i].roll_number,
-               students[i].average_marks);
-    }
+    display_students(students);
 }
