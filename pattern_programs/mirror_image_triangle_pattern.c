@@ -11,9 +11,9 @@ void print_pattern(int n) {
         printf("\n");
     }
     for (int i = n - 1; i > 0; i--) {
-        /*        for (int j = i; j <= n; j++) {
-                    printf(" ");
-                }*/
+        for (int j = i; j > 1; j--) {
+            printf(" ");
+        }
         for (int k = i; k <= n; k++) {
             printf("%d ", k);
         }
