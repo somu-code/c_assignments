@@ -14,9 +14,6 @@ void print_pattern(int n) {
                 printf("* ");
             } else
                 printf("  ");
-            /* else if (j > 1 || j < n - i - 1) {
-                 printf("#");
-             }*/
         }
         printf("\n");
     }
