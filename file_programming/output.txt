@@ -1,0 +1,3 @@
+A
+Hello, world!
+Address of int variable n 0x7ffcbb337e74
