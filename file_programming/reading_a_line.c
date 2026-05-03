@@ -6,7 +6,7 @@ int main(void) {
     fp = fopen("multi_line_text.txt", "r");
     if (fp == NULL) {
         perror("fopen");
-        exit(1);
+        return EXIT_FAILURE;
     }
     char s[1024];
     int line_count = 0;

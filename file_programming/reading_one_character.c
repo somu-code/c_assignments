@@ -7,7 +7,7 @@ int main(void) {
     fp = fopen("hello.txt", "r");
     if (fp == NULL) {
         perror("fopen");
-        exit(1);
+        return EXIT_FAILURE;
     }
     while ((c = fgetc(fp)) != EOF) {
         printf("%c", c);

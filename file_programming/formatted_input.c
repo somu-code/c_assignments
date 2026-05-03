@@ -6,7 +6,7 @@ int main(void) {
     fp = fopen("whales.txt", "r");
     if (fp == NULL) {
         perror("fopen");
-        exit(1);
+        return EXIT_FAILURE;
     }
     char name[1024];
     float mass;

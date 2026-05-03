@@ -6,7 +6,7 @@ int main(void) {
     FILE* fp = fopen("output.txt", "w");
     if (fp == NULL) {
         perror("fopen");
-        exit(1);
+        return EXIT_FAILURE;
     }
     fputc('A', fp);
     fputc('\n', fp);
