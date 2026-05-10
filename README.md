@@ -8,17 +8,66 @@ at the machine level. Every program here is written with that intent.
 
 ---
 
+## Directory Structure
+
+```
+c-fundamentals/
+├── standard_library_implementations/
+│   ├── strlen.c
+│   ├── memcpy.c
+│   ├── memmove.c                         ← todo
+│   ├── strcpy.c                          ← todo
+│   ├── strcat.c                          ← todo
+│   └── malloc.c                          ← todo (ambitious but impressive)
+│
+├── data_structures/
+│   ├── linked_list.c
+│   ├── doubly_linked_list.c              ← todo
+│   ├── stack.c                           ← todo
+│   ├── queue.c                           ← todo
+│   ├── hash_map.c                        ← todo
+│   └── dynamic_array.c                   ← todo
+│
+├── algorithms/
+│   ├── bubble_sort.c
+│   ├── insertion_sort.c
+│   ├── binary_search.c
+│   ├── merge_sort.c                      ← todo
+│   ├── quick_sort.c                      ← todo
+│   └── generic_sort.c
+│
+├── systems/
+│   ├── file_programming/
+│   ├── network_programming/
+│   │   ├── http_server.c
+│   │   └── multithreaded_http_server.c   ← todo
+│   └── commandline_tools/
+│
+├── memory_and_pointers/
+│   ├── pointer_arithmetic.c
+│   ├── struct_memory_layout.c
+│   ├── generic_functions.c
+│   └── function_pointers.c
+│
+└── parsers/
+    └── markdown_parser.c                 ← todo (most impressive)
+```
+
+---
+
 ## Standard Library Implementations
 
 Reimplementing standard library functions from scratch to understand
 what the abstractions are hiding.
 
-- `strlen` — counts bytes in a string by walking memory until `\0`
-- `memcpy` — copies n bytes from source to destination using void pointers
-- `memmove` — like memcpy but handles overlapping memory regions (todo)
-- `strcpy` — copies a string including the null terminator (todo)
-- `strcat` — concatenates two strings (todo)
-- `malloc` — simple memory allocator (todo)
+| File | Description | Status |
+|---|---|---|
+| `strlen.c` | Counts bytes in a string by walking memory until `\0` | ✅ Done |
+| `memcpy.c` | Copies n bytes from source to destination using void pointers | ✅ Done |
+| `memmove.c` | Like memcpy but handles overlapping memory regions | 🔲 Todo |
+| `strcpy.c` | Copies a string including the null terminator | 🔲 Todo |
+| `strcat.c` | Concatenates two strings | 🔲 Todo |
+| `malloc.c` | Simple memory allocator | 🔲 Todo |
 
 ---
 
@@ -26,21 +75,27 @@ what the abstractions are hiding.
 
 Implementing fundamental data structures using raw memory and pointers.
 
-- `linked_list` — singly linked list with insert, delete, search (todo)
-- `stack` — stack implementation using linked list (todo)
-- `hash_map` — hash map with collision handling (todo)
-- `dynamic_array` — a vector-like growable array using realloc (todo)
+| File | Description | Status |
+|---|---|---|
+| `linked_list.c` | Singly linked list with insert, delete, search | 🔲 Todo |
+| `doubly_linked_list.c` | Linked list that traverses both directions | 🔲 Todo |
+| `stack.c` | LIFO data structure using linked list | 🔲 Todo |
+| `queue.c` | FIFO data structure using linked list | 🔲 Todo |
+| `hash_map.c` | Hash map with collision handling | 🔲 Todo |
+| `dynamic_array.c` | Vector-like growable array using realloc | 🔲 Todo |
 
 ---
 
 ## Algorithms
 
-- `bubble_sort` — simple comparison sort
-- `insertion_sort` — efficient for small or nearly sorted data
-- `binary_search` — O(log n) search on sorted arrays
-- `merge_sort` — divide and conquer sorting (todo)
-- `generic_sort` — sorting any data type using void pointers and
-  function pointers, the same approach used by qsort
+| File | Description | Status |
+|---|---|---|
+| `bubble_sort.c` | Simple comparison sort | ✅ Done |
+| `insertion_sort.c` | Efficient for small or nearly sorted data | ✅ Done |
+| `binary_search.c` | O(log n) search on sorted arrays | ✅ Done |
+| `generic_sort.c` | Sorting any data type using void pointers and function pointers | ✅ Done |
+| `merge_sort.c` | Divide and conquer sorting | 🔲 Todo |
+| `quick_sort.c` | The algorithm behind the standard library qsort | 🔲 Todo |
 
 ---
 
@@ -49,27 +104,42 @@ Implementing fundamental data structures using raw memory and pointers.
 Programs that interact directly with the operating system.
 
 ### File I/O
-- Reading and writing files
-- Parsing structured data from files
+Reading, writing, and parsing structured data from files.
 
 ### Network Programming
-- HTTP server — serves static files over TCP
-- Multithreaded HTTP server — handles concurrent connections (todo)
+
+| File | Description | Status |
+|---|---|---|
+| `http_server.c` | Serves static files over TCP | ✅ Done |
+| `multithreaded_http_server.c` | Handles concurrent connections | 🔲 Todo |
 
 ### Command Line Tools
-- Tools that read from stdin, process data, write to stdout
-- Argument parsing with argc and argv
+Tools that read from stdin, process data, and write to stdout.
 
 ---
 
 ## Memory and Pointers
 
-Programs that demonstrate deep pointer understanding.
+Programs that demonstrate deep pointer and memory understanding.
 
-- Pointer arithmetic — walking arrays and strings with pointer math
-- Struct memory layout — padding, alignment, offsetof
-- void pointers — writing generic functions that work on any type
-- Function pointers — passing behavior as data
+| File | Description |
+|---|---|
+| `pointer_arithmetic.c` | Walking arrays and strings with pointer math |
+| `struct_memory_layout.c` | Padding, alignment, and offsetof |
+| `generic_functions.c` | Writing functions that work on any type using void pointers |
+| `function_pointers.c` | Passing behavior as data |
+
+---
+
+## Parsers
+
+| File | Description | Status |
+|---|---|---|
+| `markdown_parser.c` | Parses markdown and converts to HTML | 🔲 Todo |
+
+The markdown parser is the most ambitious project in this repo — it
+combines string handling, memory management, file I/O, and pointers
+into one real, useful program.
 
 ---
 
@@ -94,46 +164,3 @@ Each program is self contained and compiles with:
 ```bash
 gcc -Wall -Wextra -o output filename.c
 ```
-
-## Directory Structure
-
-c-fundamentals/
-├── standard_library_implementations/
-│   ├── strlen.c
-│   ├── memcpy.c
-│   ├── memmove.c          ← todo
-│   ├── strcpy.c           ← todo
-│   ├── strcat.c           ← todo
-│   └── malloc.c           ← todo (ambitious but impressive)
-│
-├── data_structures/
-│   ├── linked_list.c
-│   ├── doubly_linked_list.c   ← todo
-│   ├── stack.c                ← todo
-│   ├── queue.c                ← todo
-│   ├── hash_map.c             ← todo
-│   └── dynamic_array.c        ← todo
-│
-├── algorithms/
-│   ├── bubble_sort.c
-│   ├── insertion_sort.c
-│   ├── binary_search.c
-│   ├── merge_sort.c           ← todo
-│   ├── quick_sort.c           ← todo
-│   └── generic_sort.c
-│
-├── systems/
-│   ├── file_programming/
-│   ├── network_programming/
-│   │   ├── http_server.c
-│   │   └── multithreaded_http_server.c   ← todo
-│   └── commandline_tools/
-│
-├── memory_and_pointers/
-│   ├── pointer_arithmetic.c
-│   ├── struct_memory_layout.c
-│   ├── generic_functions.c
-│   └── function_pointers.c
-│
-└── parsers/
-    └── markdown_parser.c      ← todo (most impressive)
