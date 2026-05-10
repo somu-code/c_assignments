@@ -97,30 +97,43 @@ gcc -Wall -Wextra -o output filename.c
 
 ## Directory Structure
 
-```
 c-fundamentals/
 ├── standard_library_implementations/
 │   ├── strlen.c
 │   ├── memcpy.c
-│   ├── memmove.c
-│   └── strcpy.c
+│   ├── memmove.c          ← todo
+│   ├── strcpy.c           ← todo
+│   ├── strcat.c           ← todo
+│   └── malloc.c           ← todo (ambitious but impressive)
+│
 ├── data_structures/
 │   ├── linked_list.c
-│   ├── stack.c
-│   ├── hash_map.c
-│   └── dynamic_array.c
+│   ├── doubly_linked_list.c   ← todo
+│   ├── stack.c                ← todo
+│   ├── queue.c                ← todo
+│   ├── hash_map.c             ← todo
+│   └── dynamic_array.c        ← todo
+│
 ├── algorithms/
 │   ├── bubble_sort.c
 │   ├── insertion_sort.c
-│   ├── merge_sort.c
 │   ├── binary_search.c
+│   ├── merge_sort.c           ← todo
+│   ├── quick_sort.c           ← todo
 │   └── generic_sort.c
+│
 ├── systems/
 │   ├── file_programming/
 │   ├── network_programming/
+│   │   ├── http_server.c
+│   │   └── multithreaded_http_server.c   ← todo
 │   └── commandline_tools/
-└── memory_and_pointers/
-    ├── pointer_arithmetic.c
-    ├── struct_memory_layout.c
-    └── generic_functions.c
-```
+│
+├── memory_and_pointers/
+│   ├── pointer_arithmetic.c
+│   ├── struct_memory_layout.c
+│   ├── generic_functions.c
+│   └── function_pointers.c
+│
+└── parsers/
+    └── markdown_parser.c      ← todo (most impressive)
