@@ -40,3 +40,4 @@ carries into every other language.
 - Write a markdown parser
 - Fractal generator
 - Terminal graphics renderer
+- A memory allocator
