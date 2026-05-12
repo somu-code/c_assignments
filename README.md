@@ -49,7 +49,7 @@ c-fundamentals/
 │   ├── generic_functions.c
 │   └── function_pointers.c
 │
-└── parsers/
+└── projects/
     └── markdown_parser.c                 ← todo (most impressive)
 ```
 
