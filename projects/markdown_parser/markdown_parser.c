@@ -16,6 +16,19 @@ int main(int argc, char **argv) {
             perror("FILE pointer is NULL");
             return EXIT_FAILURE;
         }
+    }
+    size_t line_buffer_size = 1024;
+    char *line_buffer = malloc(line_buffer_size);
+    if (line_buffer == NULL) {
+        perror("malloc failed");
+        return EXIT_FAILURE;
+    }
+    char *reading_buffer = fgets(line_buffer, line_buffer_size, markdown_input);
+    if (reading_buffer != NULL) {
+        printf("%s", reading_buffer);
+    }
+    free(line_buffer);
+    if (argc == 2) {
         fclose(markdown_input);
     }
     return EXIT_SUCCESS;
