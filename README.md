@@ -21,7 +21,7 @@ c-fundamentals/
 │   └── malloc.c                          ← todo (ambitious but impressive)
 │
 ├── data_structures/
-│   ├── linked_list.c
+│   ├── linked_list.c                     ← todo
 │   ├── doubly_linked_list.c              ← todo
 │   ├── stack.c                           ← todo
 │   ├── queue.c                           ← todo
@@ -29,9 +29,9 @@ c-fundamentals/
 │   └── dynamic_array.c                   ← todo
 │
 ├── algorithms/
-│   ├── bubble_sort.c
-│   ├── insertion_sort.c
-│   ├── binary_search.c
+│   ├── bubble_sort.c                     ← todo
+│   ├── insertion_sort.c                  ← todo
+│   ├── binary_search.c                   ← todo
 │   ├── merge_sort.c                      ← todo
 │   ├── quick_sort.c                      ← todo
 │   └── generic_sort.c
@@ -39,18 +39,18 @@ c-fundamentals/
 ├── systems/
 │   ├── file_programming/
 │   ├── network_programming/
-│   │   ├── http_server.c
+│   │   ├── http_server.c                 ← todo
 │   │   └── multithreaded_http_server.c   ← todo
 │   └── commandline_tools/
 │
 ├── memory_and_pointers/
-│   ├── pointer_arithmetic.c
-│   ├── struct_memory_layout.c
-│   ├── generic_functions.c
-│   └── function_pointers.c
+│   ├── pointer_arithmetic.c              ← todo
+│   ├── struct_memory_layout.c            ← todo
+│   ├── generic_functions.c               ← todo
+│   └── function_pointers.c               ← todo
 │
 └── projects/
-    └── markdown_parser.c                 ← todo (most impressive)
+    └── markdown_parser.c                 ← currently working on it
 ```
 
 ---
@@ -90,10 +90,10 @@ Implementing fundamental data structures using raw memory and pointers.
 
 | File | Description | Status |
 |---|---|---|
-| `bubble_sort.c` | Simple comparison sort | ✅ Done |
-| `insertion_sort.c` | Efficient for small or nearly sorted data | ✅ Done |
-| `binary_search.c` | O(log n) search on sorted arrays | ✅ Done |
-| `generic_sort.c` | Sorting any data type using void pointers and function pointers | ✅ Done |
+| `bubble_sort.c` | Simple comparison sort |  🔲 Done |
+| `insertion_sort.c` | Efficient for small or nearly sorted data | 🔲  Done |
+| `binary_search.c` | O(log n) search on sorted arrays | 🔲 Done |
+| `generic_sort.c` | Sorting any data type using void pointers and function pointers | 🔲 Done |
 | `merge_sort.c` | Divide and conquer sorting | 🔲 Todo |
 | `quick_sort.c` | The algorithm behind the standard library qsort | 🔲 Todo |
 
@@ -110,7 +110,7 @@ Reading, writing, and parsing structured data from files.
 
 | File | Description | Status |
 |---|---|---|
-| `http_server.c` | Serves static files over TCP | ✅ Done |
+| `http_server.c` | Serves static files over TCP | 🔲 Done |
 | `multithreaded_http_server.c` | Handles concurrent connections | 🔲 Todo |
 
 ### Command Line Tools
