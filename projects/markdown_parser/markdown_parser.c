@@ -21,11 +21,13 @@ int main(int argc, char **argv) {
     char *line_buffer = malloc(line_buffer_size);
     if (line_buffer == NULL) {
         perror("malloc failed");
+        if (argc == 2) {
+            fclose(markdown_input);
+        }
         return EXIT_FAILURE;
     }
-    char *reading_buffer = fgets(line_buffer, line_buffer_size, markdown_input);
-    if (reading_buffer != NULL) {
-        printf("%s", reading_buffer);
+    while (fgets(line_buffer, line_buffer_size, markdown_input) != NULL) {
+        printf("%s", line_buffer);
     }
     free(line_buffer);
     if (argc == 2) {
