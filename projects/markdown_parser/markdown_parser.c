@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char **argv) {
     if (argc > 2) {
@@ -27,7 +28,17 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
     while (fgets(line_buffer, line_buffer_size, markdown_input) != NULL) {
-        printf("%s", line_buffer);
+        size_t number_of_headings = 0;
+        if (line_buffer[0] == '#') {
+            for (int i = 0; i < 6; i++) {
+                if (line_buffer[i] == '#') {
+                    number_of_headings++;
+                } else {
+                    break;
+                }
+            }
+        }
+        printf("%zu\n", number_of_headings);
     }
     free(line_buffer);
     if (argc == 2) {
