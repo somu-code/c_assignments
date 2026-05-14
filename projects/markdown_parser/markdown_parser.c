@@ -37,8 +37,13 @@ int main(int argc, char **argv) {
                     break;
                 }
             }
+            char *p = strchr(line_buffer, '\n');
+            if (p != NULL) {
+                *p = '\0';
+            }
+            printf("<h%zu>%s</h%zu>", number_of_headings,
+                   &line_buffer[number_of_headings + 1], number_of_headings);
         }
-        printf("%zu\n", number_of_headings);
     }
     free(line_buffer);
     if (argc == 2) {
