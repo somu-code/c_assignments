@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,22 +28,37 @@ int main(int argc, char **argv) {
         }
         return EXIT_FAILURE;
     }
+    bool in_code_block = false;
     while (fgets(line_buffer, line_buffer_size, markdown_input) != NULL) {
-        size_t number_of_headings = 0;
-        if (line_buffer[0] == '#') {
-            for (int i = 0; i < 6; i++) {
-                if (line_buffer[i] == '#') {
-                    number_of_headings++;
-                } else {
-                    break;
+        if (!in_code_block) {
+            if (line_buffer[0] == '`' && line_buffer[1] == '`' &&
+                line_buffer[2] == '`') {
+                in_code_block = true;
+                printf("<pre><code>");
+                printf("%s", line_buffer);
+            } else if (line_buffer[0] == '#') {
+                size_t number_of_headings = 0;
+                for (int i = 0; i < 6; i++) {
+                    if (line_buffer[i] == '#') {
+                        number_of_headings++;
+                    } else {
+                        break;
+                    }
                 }
+                char *p = strchr(line_buffer, '\n');
+                if (p != NULL) {
+                    *p = '\0';
+                }
+                printf("<h%zu>%s</h%zu>", number_of_headings,
+                       &line_buffer[number_of_headings + 1],
+                       number_of_headings);
             }
-            char *p = strchr(line_buffer, '\n');
-            if (p != NULL) {
-                *p = '\0';
-            }
-            printf("<h%zu>%s</h%zu>", number_of_headings,
-                   &line_buffer[number_of_headings + 1], number_of_headings);
+        } else if (line_buffer[0] == '`' && line_buffer[1] == '`' &&
+                   line_buffer[2] == '`') {
+            in_code_block = false;
+            printf("</code></pre>");
+        } else {
+            printf("%s", line_buffer);
         }
     }
     free(line_buffer);
