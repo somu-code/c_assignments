@@ -29,40 +29,38 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
     bool in_code_block = false;
+    bool in_unordered_list = false;
     while (fgets(line_buffer, line_buffer_size, markdown_input) != NULL) {
-        if (!in_code_block) {
-            if (line_buffer[0] == '`' && line_buffer[1] == '`' &&
-                line_buffer[2] == '`') {
-                in_code_block = true;
-                printf("<pre><code>");
-            } else if (line_buffer[0] == '#') {
-                size_t number_of_headings = 0;
-                for (int i = 0; i < 6; i++) {
-                    if (line_buffer[i] == '#') {
-                        number_of_headings++;
-                    } else {
-                        break;
-                    }
+        if (line_buffer[0] == '#' && !in_code_block) {
+            size_t number_of_headings = 0;
+            for (int i = 0; i < 6; i++) {
+                if (line_buffer[i] == '#') {
+                    number_of_headings++;
+                } else {
+                    break;
                 }
-                char *p = strchr(line_buffer, '\n');
-                if (p != NULL) {
-                    *p = '\0';
-                }
-                printf("<h%zu>%s</h%zu>", number_of_headings,
-                       &line_buffer[number_of_headings + 1],
-                       number_of_headings);
-            } else if (line_buffer[0] == '-') {
-                char *p = strchr(line_buffer, '\n');
-                if (p != NULL) {
-                    *p = '\0';
-                }
-                printf("<li>%s</li>", &line_buffer[2]);
             }
-        } else if (line_buffer[0] == '`' && line_buffer[1] == '`' &&
-                   line_buffer[2] == '`') {
+            char *p = strchr(line_buffer, '\n');
+            if (p != NULL) {
+                *p = '\0';
+            }
+            printf("<h%zu>%s</h%zu>\n", number_of_headings,
+                   &line_buffer[number_of_headings + 1], number_of_headings);
+        } else if (line_buffer[0] == '-') {
+            char *p = strchr(line_buffer, '\n');
+            if (p != NULL) {
+                *p = '\0';
+            }
+            printf("<li>%s</li>\n", &line_buffer[2]);
+        } else if (!in_code_block && line_buffer[0] == '`' &&
+                   line_buffer[1] == '`' && line_buffer[2] == '`') {
+            in_code_block = true;
+            printf("<pre><code>\n");
+        } else if (in_code_block && line_buffer[0] == '`' &&
+                   line_buffer[1] == '`' && line_buffer[2] == '`') {
             in_code_block = false;
-            printf("</code></pre>");
-        } else {
+            printf("</code></pre>\n");
+        } else if (in_code_block) {
             printf("%s", line_buffer);
         }
     }
