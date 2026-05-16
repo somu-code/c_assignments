@@ -46,12 +46,23 @@ int main(int argc, char **argv) {
             }
             printf("<h%zu>%s</h%zu>\n", number_of_headings,
                    &line_buffer[number_of_headings + 1], number_of_headings);
-        } else if (line_buffer[0] == '-') {
+        } else if (!in_unordered_list && line_buffer[0] == '-') {
+            in_unordered_list = true;
+            printf("<ul>\n");
             char *p = strchr(line_buffer, '\n');
             if (p != NULL) {
                 *p = '\0';
             }
             printf("<li>%s</li>\n", &line_buffer[2]);
+        } else if (in_unordered_list && line_buffer[0] == '-') {
+            char *p = strchr(line_buffer, '\n');
+            if (p != NULL) {
+                *p = '\0';
+            }
+            printf("<li>%s</li>\n", &line_buffer[2]);
+        } else if (in_unordered_list) {
+            in_unordered_list = false;
+            printf("</ul>\n");
         } else if (!in_code_block && line_buffer[0] == '`' &&
                    line_buffer[1] == '`' && line_buffer[2] == '`') {
             in_code_block = true;
