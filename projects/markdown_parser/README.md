@@ -1,30 +1,70 @@
-### A markdown editor with important parsing concepts - line by line parsing, inline parsing, nested structures, state machines. cmark is the inspiration here.
-## Requirments
-### Input
-- Read from .md file passed as a command line argument.
-- Read from stdin if no file is given.
-### Output
-- By default print HTML to terminal.
-- With -o flag write to an HTML file.
-## Markdown features to support
-### Block level elements - one per line:
-- Headings - #, ##, ###
-- Paragraphs - plain text
-- Unordered lists - - item
-- Ordered lists - 1. item
-- Blockquotes - > text
-- Code blocks - triple backtick
-- Horizontal rule - ---
-### Inline elements - inside a line:
-- Italic - *text*
-- Inline code - `code`
-- Links - [text](url)
-- Images - ![alt](url)
-### Tables:
-# The learning value from each feature
-Headings, paragraphs - Basic line by line parsing
-Lists - Tracking state across multiple lines
-code blocks - Multi line state, ignoring other patterns inside
-Inline bold/italic - Parsing within a line, finding matching pairs
-Links and images - Parsing structured patterns []()
-Tables - Most complex - columns, alignment, multiple rows
+### Note
+
+Right now this markdown editor sucessfully parse headings, unordered lists, and code blocks. Now as the project growws i feeling more like handling edge cases than praticing C fundamentals. So i decided to move on to **Network Programming in C**.
+
+# Markdown Editor
+
+A markdown parser built around important parsing concepts — line-by-line parsing,
+inline parsing, nested structures, and state machines. Inspired by [cmark](https://github.com/commonmark/cmark).
+
+---
+
+## Input
+
+| Source | Behaviour |
+|--------|-----------|
+| File   | Read from a `.md` file passed as a command-line argument |
+| Stdin  | Read from stdin when no file argument is given |
+
+---
+
+## Output
+
+| Flag       | Behaviour                       |
+|------------|---------------------------------|
+| *(default)*| Print generated HTML to terminal |
+| `-o <file>`| Write generated HTML to a file  |
+
+---
+
+## Supported Markdown Features
+
+### Block-level Elements *(one per line)*
+
+| Syntax         | Element          |
+|----------------|------------------|
+| `# Heading`    | Heading (h1–h3)  |
+| Plain text     | Paragraph        |
+| Two spaces     | Line Breaks      |
+| `- item`       | Unordered list   |
+| `1. item`      | Ordered list     |
+| `> text`       | Blockquote       |
+| ` ``` `        | Code block       |
+| `---`          | Horizontal rule  |
+
+### Inline Elements *(inside a line)*
+
+| Syntax            | Element      |
+|-------------------|--------------|
+| **bold**          | Bold         |
+| `*text*`          | Italic       |
+| `` `code` ``      | Inline code  |
+| `[text](url)`     | Link         |
+| `![alt](url)`     | Image        |
+
+### Tables
+
+Standard pipe-delimited tables with optional alignment rows.
+
+---
+
+## Learning Value by Feature
+
+| Feature                  | Parsing Concept                                          |
+|--------------------------|----------------------------------------------------------|
+| Headings & paragraphs    | Basic line-by-line parsing                               |
+| Lists                    | Tracking state across multiple lines                     |
+| Code blocks              | Multi-line state; ignoring all other patterns inside     |
+| Inline bold / italic     | Parsing within a line; finding matching delimiter pairs  |
+| Links & images           | Parsing structured `[…](…)` patterns                    |
+| Tables                   | Most complex — columns, alignment rows, multiple rows    |
