@@ -50,7 +50,9 @@ c-fundamentals/
 │   └── function_pointers.c               ← todo
 │
 └── projects/
-    └── markdown_parser.c                
+    └── markdown_parser/
+        └── markdown_parser.c
+        
 ```
 
 ---
