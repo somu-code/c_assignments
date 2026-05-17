@@ -154,5 +154,11 @@ int main(int argc, char **argv) {
     }
     fprintf(output_html, "%s", HTML_FOOTER);
     free(line_buffer);
+    if (markdown_input != NULL && markdown_input != stdin) {
+        fclose(markdown_input);
+    }
+    if (output_html != NULL && output_html != stdout) {
+        fclose(output_html);
+    }
     return EXIT_SUCCESS;
 }
