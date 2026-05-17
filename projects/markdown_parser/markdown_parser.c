@@ -13,6 +13,18 @@
 */
 
 int main(int argc, char **argv) {
+    const char *HTML_HEADER =
+        "<!DOCTYPE html>\n"
+        "<html lang=\"en\">\n"
+        "<head>\n"
+        "<meta charset=\"UTF-8\">\n"
+        "<meta name=\"viewport\" content=\"width=device-width, "
+        "initial-scale=1.0\">\n"
+        "<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
+        "<title>Markdown parser</title>\n";
+    const char *HTML_FOOTER =
+        "</head>\n"
+        "<body>\n";
     FILE *markdown_input = NULL;
     FILE *output_html = NULL;
     if (argc == 1) {
@@ -92,6 +104,7 @@ int main(int argc, char **argv) {
     }
     bool in_code_block = false;
     bool in_unordered_list = false;
+    fprintf(output_html, "%s", HTML_HEADER);
     while (fgets(line_buffer, line_buffer_size, markdown_input) != NULL) {
         if (line_buffer[0] == '#' && !in_code_block) {
             size_t number_of_headings = 0;
@@ -139,9 +152,7 @@ int main(int argc, char **argv) {
             fprintf(output_html, "%s", line_buffer);
         }
     }
+    fprintf(output_html, "%s", HTML_FOOTER);
     free(line_buffer);
-    if (argc == 2) {
-        fclose(markdown_input);
-    }
     return EXIT_SUCCESS;
 }
