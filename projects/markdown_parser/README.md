@@ -25,6 +25,14 @@ inline parsing, nested structures, and state machines. Inspired by [cmark](https
 | *(default)*| Print generated HTML to terminal |
 | `-o <file>`| Write generated HTML to a file  |
 
+### Few output options
+- ./mdparser                             # stdin → stdout
+- ./mdparser input.md                    # file → stdout
+- ./mdparser -o                          # stdin → auto generated filename
+- ./mdparser -o output.html              # stdin → named file
+- ./mdparser -o input.md                 # file → auto generated filename
+- ./mdparser -o output.html input.md     # file → named file
+
 ---
 
 ## Supported Markdown Features
